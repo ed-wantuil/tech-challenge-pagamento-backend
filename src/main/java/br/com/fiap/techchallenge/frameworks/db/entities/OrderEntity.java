@@ -3,35 +3,33 @@ package br.com.fiap.techchallenge.frameworks.db.entities;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Entity
-@Table(name = "orders")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Getter
-@Setter
+@Data
+@DynamoDBDocument
 public class OrderEntity {
 
-    @Id
-    @GeneratedValue
+    @DynamoDBAttribute(attributeName = "orderId")
     private UUID orderId;
 
+    @DynamoDBAttribute(attributeName = "customerId")
     private String customerId;
 
+    @DynamoDBAttribute(attributeName = "paymentStatus")
     private String paymentStatus;
 
+    @DynamoDBAttribute(attributeName = "created")
     private LocalDate created;
 
+    @DynamoDBAttribute(attributeName = "amount")
     private Double amount;
 
 }
