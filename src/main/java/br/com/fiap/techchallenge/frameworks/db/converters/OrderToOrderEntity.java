@@ -12,21 +12,11 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class OrderToOrderEntity {
 
-    private final CustomerToCustomerEntity customerToCustomerEntity;
-
-    private final OrderItemToOrderItemEntity orderItemToOrderItemEntity;
-
     public OrderEntity convert(final Order order) {
         return OrderEntity
                 .builder()
-                .id(Objects.nonNull(order.getId()) ? UUID.fromString(order.getId()) : null)
-                .customer(Objects.nonNull(order.getCustomer()) ? customerToCustomerEntity.convert(order.getCustomer()) : null)
-                .items(order.getItems()
-                        .stream()
-                        .map(orderItemToOrderItemEntity::convert)
-                        .toList())
+                .orderId(Objects.nonNull(order.getOrderId()) ? UUID.fromString(order.getOrderId()) : null)
                 .amount(order.getAmount().amount())
-                .deliveryStatus(order.getDeliveryStatus().getStatus().toString())
                 .paymentStatus(order.getPaymentStatus().getStatus().toString())
                 .created(order.getCreated())
                 .build();

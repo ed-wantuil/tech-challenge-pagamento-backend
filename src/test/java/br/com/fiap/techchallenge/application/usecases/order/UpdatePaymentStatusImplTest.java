@@ -30,7 +30,7 @@ public class UpdatePaymentStatusImplTest {
         String orderId = "orderId123";
         String newPaymentStatus = "PAID";
         Order mockUpdatedOrder = new Order();
-        mockUpdatedOrder.setId(orderId);
+        mockUpdatedOrder.setOrderId(orderId);
 
         mockUpdatedOrder.setPaymentStatus(new PaymentStatus(newPaymentStatus)); // Assumindo que Order possui um método setPaymentStatus
 
@@ -40,7 +40,7 @@ public class UpdatePaymentStatusImplTest {
 
         verify(orderGateway, times(1)).updatePaymentStatus(orderId, newPaymentStatus);
         assertNotNull(resultOrder, "O pedido retornado não deve ser nulo.");
-        assertEquals(orderId, resultOrder.getId(), "O ID do pedido retornado deve corresponder ao fornecido.");
+        assertEquals(orderId, resultOrder.getOrderId(), "O ID do pedido retornado deve corresponder ao fornecido.");
         assertEquals(new PaymentStatus(newPaymentStatus).getStatus(), resultOrder.getPaymentStatus().getStatus(), "O status de pagamento do pedido deve ser atualizado para o novo estado.");
     }
 }

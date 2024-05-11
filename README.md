@@ -2,7 +2,7 @@
 
 ## Introdução
 Este projeto foi desenvolvido como parte do curso de pós-graduação em Arquitetura de Software, visando a implementação de práticas modernas de desenvolvimento e operações.
-
+Este Microserviço é responsável por operacionalizar a cobrança de um pedido, registrando a solicitação de pagamento, recebendo o retorno do processador de pagamento e atualizando o status do pedido.
 ## Arquitetura do Software
 A documentação detalhada da arquitetura do software e das APIs disponíveis pode ser encontrada [aqui](https://gitlab.com/ed-wantuil/tech-challenge-clean-architecture).
 
