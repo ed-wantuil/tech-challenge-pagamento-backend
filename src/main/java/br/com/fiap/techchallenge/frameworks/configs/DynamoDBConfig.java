@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableDynamoDBRepositories(basePackageClasses = "br.com.fiap.techchallenge")
+@EnableDynamoDBRepositories(basePackages = "br.com.fiap.techchallenge")
 @RequiredArgsConstructor
 public class DynamoDBConfig {
 
