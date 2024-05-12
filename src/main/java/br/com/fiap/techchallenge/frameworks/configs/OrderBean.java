@@ -1,9 +1,14 @@
 package br.com.fiap.techchallenge.frameworks.configs;
 
 import br.com.fiap.techchallenge.application.gateways.OrderGateway;
+import br.com.fiap.techchallenge.application.gateways.OrderQueueGateway;
+import br.com.fiap.techchallenge.application.usecases.order.CreateOrder;
 import br.com.fiap.techchallenge.application.usecases.order.FindOrderById;
+import br.com.fiap.techchallenge.application.usecases.order.RegisterDelivery;
 import br.com.fiap.techchallenge.application.usecases.order.UpdatePaymentStatus;
+import br.com.fiap.techchallenge.application.usecases.order.impl.CreateOrderImpl;
 import br.com.fiap.techchallenge.application.usecases.order.impl.FindOrderByIdImpl;
+import br.com.fiap.techchallenge.application.usecases.order.impl.RegisterDeliveryImpl;
 import br.com.fiap.techchallenge.application.usecases.order.impl.UpdatePaymentStatusImpl;
 import br.com.fiap.techchallenge.frameworks.web.order.FindOrderByIdWeb;
 import br.com.fiap.techchallenge.frameworks.web.order.UpdatePaymentStatusWebhook;
@@ -28,6 +33,16 @@ public class OrderBean {
     @Bean
     UpdatePaymentStatus updatePaymentStatus(final OrderGateway orderGateway) {
         return new UpdatePaymentStatusImpl(orderGateway);
+    }
+
+    @Bean
+    CreateOrder createOrder(final OrderGateway orderGateway) {
+        return new CreateOrderImpl(orderGateway);
+    }
+
+    @Bean
+    RegisterDelivery registerDelivery(final OrderQueueGateway orderQueueGateway) {
+        return new RegisterDeliveryImpl(orderQueueGateway);
     }
 
     @Bean

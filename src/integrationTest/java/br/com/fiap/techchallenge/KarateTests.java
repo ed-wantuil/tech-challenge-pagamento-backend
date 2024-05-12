@@ -30,8 +30,9 @@ public class KarateTests {
 
     @BeforeAll
     public static void beforeAll() {
-        final String dynamoEndpoint = localStackContainer.getEndpointOverride(LocalStackContainer.Service.DYNAMODB).toString();
-        System.setProperty("aws.dynamodb.endpoint", dynamoEndpoint);
+        final String endpoint = localStackContainer.getEndpointOverride(LocalStackContainer.Service.DYNAMODB).toString();
+        System.setProperty("aws.dynamodb.endpoint", endpoint);
+        System.setProperty("aws.sqs.endpoint", endpoint);
 
         final String region = localStackContainer.getRegion();
         System.setProperty("aws.region", region);
@@ -42,7 +43,7 @@ public class KarateTests {
         final String secretKey = localStackContainer.getSecretKey();
         System.setProperty("aws.secretKey", secretKey);
 
-        DynamoInit.init(dynamoEndpoint, region, accessKey, secretKey);
+        DynamoInit.init(endpoint, region, accessKey, secretKey);
     }
 
     @Karate.Test
