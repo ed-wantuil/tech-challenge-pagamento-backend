@@ -31,8 +31,8 @@ public class OrderBean {
     }
 
     @Bean
-    UpdatePaymentStatus updatePaymentStatus(final OrderGateway orderGateway) {
-        return new UpdatePaymentStatusImpl(orderGateway);
+    UpdatePaymentStatus updatePaymentStatus(final OrderGateway orderGateway, final RegisterDelivery registerDelivery) {
+        return new UpdatePaymentStatusImpl(orderGateway, registerDelivery);
     }
 
     @Bean
