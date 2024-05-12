@@ -24,7 +24,7 @@ public class FindOrderByIdImplTest {
     @Test
     public void testFindOrderById() {
         String orderId = "uniqueId123";
-        Order expectedOrder = new Order(); // Substitua pela construção real do seu objeto Order.
+        Order expectedOrder = new Order();
         when(orderGateway.findById(orderId)).thenReturn(expectedOrder);
 
         Order resultOrder = findOrderById.findOrderById(orderId);

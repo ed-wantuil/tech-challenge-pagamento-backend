@@ -26,6 +26,7 @@ dependencies {
     integrationTestImplementation 'com.intuit.karate:karate-junit5:1.4.1'
     integrationTestImplementation 'org.springframework.boot:spring-boot-testcontainers'
     integrationTestImplementation 'org.testcontainers:localstack'
+    integrationTestImplementation 'org.testcontainers:junit-jupiter'
 }
 
 

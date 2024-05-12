@@ -25,7 +25,7 @@ public class DynamoDBConfig {
     @Value("${aws.accessKey}")
     private final String accessKey;
 
-    @Value("${aws.dynamodb.secretKey}")
+    @Value("${aws.secretKey}")
     private final String secretKey;
 
     @Bean

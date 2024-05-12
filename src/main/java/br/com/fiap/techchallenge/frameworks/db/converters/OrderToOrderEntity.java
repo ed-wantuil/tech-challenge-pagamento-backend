@@ -16,6 +16,7 @@ public class OrderToOrderEntity {
         return OrderEntity
                 .builder()
                 .orderId(Objects.nonNull(order.getOrderId()) ? UUID.fromString(order.getOrderId()) : null)
+                .customerId(Objects.nonNull(order.getCustomerId()) ? UUID.fromString(order.getCustomerId()) : null)
                 .amount(order.getAmount().amount())
                 .paymentStatus(order.getPaymentStatus().getStatus().toString())
                 .created(order.getCreated())
