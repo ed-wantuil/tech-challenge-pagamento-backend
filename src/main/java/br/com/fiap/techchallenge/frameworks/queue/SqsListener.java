@@ -24,7 +24,7 @@ public class SqsListener {
     private final CreateOrder createOrder;
 
     @SneakyThrows
-    @JmsListener(destination = "${aws.sqs.queue}")
+    @JmsListener(destination = "${aws.sqs.queue.pagamento.name}")
     public void receiveMessage(final TextMessage textMessage) {
         log.info("receiveMessge MESSAGE: {}", textMessage.getText());
 

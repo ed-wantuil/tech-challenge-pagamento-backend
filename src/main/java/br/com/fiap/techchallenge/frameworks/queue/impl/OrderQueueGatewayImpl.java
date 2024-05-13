@@ -19,8 +19,7 @@ public class OrderQueueGatewayImpl implements OrderQueueGateway {
 
     private final OrderToOrderQueueDTO orderToOrderQueueDTO;
 
-
-    @Value("${aws.sqs.endpoint}")
+    @Value("${aws.sqs.queue.pedido.endpoint}")
     private final String endpoint;
 
     @Override

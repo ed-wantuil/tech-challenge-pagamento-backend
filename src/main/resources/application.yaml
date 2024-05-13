@@ -10,3 +10,13 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
+
+aws:
+  sqs:
+    queue:
+      pagamento:
+        name: tech_challenge_pagamento
+        endpoint: https://sqs.us-east-1.amazonaws.com/358266770835/tech_challenge_pagamento
+      pedido:
+        name: tech_challenge_pedido
+        endpoint: https://sqs.us-east-1.amazonaws.com/358266770835/tech_challenge_pedido

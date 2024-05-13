@@ -1,5 +1,7 @@
 package br.com.fiap.techchallenge;
 
+import java.io.IOException;
+
 import br.com.fiap.techchallenge.util.DynamoInit;
 import com.intuit.karate.junit5.Karate;
 import org.junit.jupiter.api.BeforeAll;
@@ -20,6 +22,9 @@ import org.testcontainers.utility.DockerImageName;
 @ActiveProfiles("testIntegration")
 public class KarateTests {
 
+    public static final String SQS_QUEUE_PAGAMENTO_NAME = "tech_challenge_pagamento";
+    public static final String SQS_QUEUE_PEDIDO_NAME = "tech_challenge_pedido";
+
     @LocalServerPort
     private int localServerPort;
 
@@ -29,7 +34,10 @@ public class KarateTests {
                     LocalStackContainer.Service.DYNAMODB);
 
     @BeforeAll
-    public static void beforeAll() {
+    public static void beforeAll() throws IOException, InterruptedException {
+        localStackContainer.execInContainer("awslocal", "sqs", "create-queue", "--queue-name", SQS_QUEUE_PAGAMENTO_NAME);
+        localStackContainer.execInContainer("awslocal", "sqs", "create-queue", "--queue-name", SQS_QUEUE_PEDIDO_NAME);
+
         final String endpoint = localStackContainer.getEndpointOverride(LocalStackContainer.Service.DYNAMODB).toString();
         System.setProperty("aws.dynamodb.endpoint", endpoint);
         System.setProperty("aws.sqs.endpoint", endpoint);
