@@ -15,10 +15,10 @@ public class OrderToOrderEntity {
     public OrderEntity convert(final Order order) {
         return OrderEntity
                 .builder()
-                .orderId(Objects.nonNull(order.getOrderId()) ? UUID.fromString(order.getOrderId()) : null)
-                .customerId(Objects.nonNull(order.getCustomerId()) ? UUID.fromString(order.getCustomerId()) : null)
+                .orderId(order.getOrderId())
+                .customerId(order.getCustomerId())
                 .amount(order.getAmount().amount())
-                .paymentStatus(order.getPaymentStatus().getStatus().toString())
+                .paymentStatus(Objects.nonNull(order.getPaymentStatus()) ? order.getPaymentStatus().getStatus().toString() : null)
                 .created(order.getCreated())
                 .build();
     }
