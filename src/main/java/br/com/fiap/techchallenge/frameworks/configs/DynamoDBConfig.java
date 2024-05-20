@@ -2,6 +2,7 @@ package br.com.fiap.techchallenge.frameworks.configs;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.BasicSessionCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
@@ -28,10 +29,15 @@ public class DynamoDBConfig {
     @Value("${aws.secretKey}")
     private final String secretKey;
 
+    @Value("${aws.sessionToken}")
+    private final String sessionToken;
+
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
+        final BasicSessionCredentials sessionCredentials = new BasicSessionCredentials(accessKey, secretKey, sessionToken);
+
         return AmazonDynamoDBClientBuilder.standard()
-                .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
+                .withCredentials(new AWSStaticCredentialsProvider(sessionCredentials))
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endpoint, region))
                 .build();
     }

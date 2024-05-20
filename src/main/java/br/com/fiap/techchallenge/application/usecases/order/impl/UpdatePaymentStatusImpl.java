@@ -4,9 +4,9 @@ import br.com.fiap.techchallenge.application.gateways.OrderGateway;
 import br.com.fiap.techchallenge.application.usecases.order.RegisterDelivery;
 import br.com.fiap.techchallenge.application.usecases.order.UpdatePaymentStatus;
 import br.com.fiap.techchallenge.domain.entities.Order;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UpdatePaymentStatusImpl implements UpdatePaymentStatus {
 
     private final OrderGateway orderGateway;

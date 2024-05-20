@@ -18,15 +18,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Data
-@DynamoDBTable(tableName = "order")
+@DynamoDBTable(tableName = "payment")
 @DynamoDBDocument
 public class OrderEntity {
 
     @DynamoDBHashKey(attributeName = "orderId")
-    private UUID orderId;
+    private String orderId;
 
     @DynamoDBAttribute(attributeName = "customerId")
-    private UUID customerId;
+    private String customerId;
 
     @DynamoDBAttribute(attributeName = "paymentStatus")
     private String paymentStatus;

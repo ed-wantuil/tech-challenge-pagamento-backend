@@ -17,7 +17,6 @@ public class OrderQueueDTOToOrder {
                 .builder()
                 .orderId(orderQueueDTO.orderId())
                 .customerId(orderQueueDTO.customerId())
-                .paymentStatus(new PaymentStatus(orderQueueDTO.paymentStatus()))
                 .created(orderQueueDTO.created())
                 .amount(new OrderAmount(orderQueueDTO.amount()))
                 .build();

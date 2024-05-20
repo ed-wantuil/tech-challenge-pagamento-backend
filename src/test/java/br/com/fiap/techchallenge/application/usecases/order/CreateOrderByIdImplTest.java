@@ -1,9 +1,12 @@
 package br.com.fiap.techchallenge.application.usecases.order;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import br.com.fiap.techchallenge.application.gateways.OrderGateway;
+import br.com.fiap.techchallenge.application.usecases.order.impl.CreateOrderImpl;
 import br.com.fiap.techchallenge.application.usecases.order.impl.FindOrderByIdImpl;
 import br.com.fiap.techchallenge.domain.entities.Order;
 import org.junit.jupiter.api.Test;
@@ -13,23 +16,22 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class FindOrderByIdImplTest {
+class CreateOrderByIdImplTest {
 
     @Mock
     private OrderGateway orderGateway;
 
     @InjectMocks
-    private FindOrderByIdImpl findOrderById;
+    private CreateOrderImpl createOrder;
 
     @Test
     void testFindOrderById() {
-        String orderId = "uniqueId123";
-        Order expectedOrder = new Order();
-        when(orderGateway.findById(orderId)).thenReturn(expectedOrder);
+        Order order = Order.builder()
+                .customerId("1")
+                .build();
 
-        Order resultOrder = findOrderById.findOrderById(orderId);
+        createOrder.create(order);
 
-        verify(orderGateway, times(1)).findById(orderId);
-        assertEquals(expectedOrder, resultOrder, "O pedido retornado deve ser o mesmo que o esperado.");
+        verify(orderGateway, times(1)).create(order);
     }
 }

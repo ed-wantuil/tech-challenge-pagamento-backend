@@ -1,12 +1,19 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://postgres-db-instance.cjkkycwkgu89.us-east-1.rds.amazonaws.com:5432/postgres
-    username: techchallenge
-    password: 2I5d3~yiPfab9hr>z
-    hikari:
-      connectionTimeout: 20000
-      maximumPoolSize: 5
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: none
+server:
+  port: 8082
+
+aws:
+  sqs:
+    endpoint: https://sqs.us-east-1.amazonaws.com
+    queue:
+      pagamento:
+        name: tech_challenge_pagamento
+      pedido:
+        name: tech_challenge_pedido
+        endpoint: https://sqs.us-east-1.amazonaws.com/358266770835/tech_challenge_producao
+
+
+
+  dynamodb:
+    endpoint: https://dynamodb.us-east-1.amazonaws.com
+
+  region: us-east-1

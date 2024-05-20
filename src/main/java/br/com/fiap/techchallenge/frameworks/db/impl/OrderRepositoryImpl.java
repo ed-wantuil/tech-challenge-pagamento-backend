@@ -24,7 +24,7 @@ public class OrderRepositoryImpl implements OrderGateway {
 
     @Override
     public Order updatePaymentStatus(final String id, final String paymentStatus) {
-        var orderEntity = springDataOrderRepository.findById(UUID.fromString(id)).orElseThrow();
+        var orderEntity = springDataOrderRepository.findById(id).orElseThrow();
 
         orderEntity.setPaymentStatus(paymentStatus);
         orderEntity = springDataOrderRepository.save(orderEntity);
@@ -34,7 +34,7 @@ public class OrderRepositoryImpl implements OrderGateway {
 
     @Override
     public Order findById(final String id) {
-        final var oderEntity = springDataOrderRepository.findById(UUID.fromString(id)).orElseThrow();
+        final var oderEntity = springDataOrderRepository.findById(id).orElseThrow();
 
         return orderEntityToOrder.convert(oderEntity);
     }
