@@ -51,6 +51,9 @@ public class KarateTests {
         final String secretKey = localStackContainer.getSecretKey();
         System.setProperty("aws.secretKey", secretKey);
 
+        final String sessionToken = localStackContainer.getSecretKey();
+        System.setProperty("aws.sessionToken", sessionToken);
+
         DynamoInit.init(endpoint, region, accessKey, secretKey);
     }
 

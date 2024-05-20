@@ -16,7 +16,7 @@ import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 import com.amazonaws.services.dynamodbv2.model.ScalarAttributeType;
 
 public class DynamoInit {
-    private static final String TABLE_NAME = "order";
+    private static final String TABLE_NAME = "payment";
     private static final String COLUMN_KEY = "orderId";
 
     public static void init(final String endpoint, final String region, final String accessKey, final String secretKey) {
