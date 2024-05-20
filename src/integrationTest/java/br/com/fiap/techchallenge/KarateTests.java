@@ -48,6 +48,7 @@ public class KarateTests {
         final String accessKey = localStackContainer.getAccessKey();
         System.setProperty("aws.accessKey", accessKey);
 
+
         final String secretKey = localStackContainer.getSecretKey();
         System.setProperty("aws.secretKey", secretKey);
 
